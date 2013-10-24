@@ -1,5 +1,6 @@
 package libs;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -149,6 +150,12 @@ public class GeneralFunctions {
         int sum = 1;
         for (int j = i; j > 0; j--)
             sum *= j;
+        return sum;
+    }
+    public static BigInteger bigFactorial(int l) {
+        BigInteger sum = new BigInteger("1");
+        for (long j = l; j > 0; j--)
+            sum = sum.multiply(new BigInteger(j+""));
         return sum;
     }
 
