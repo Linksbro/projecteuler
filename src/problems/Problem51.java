@@ -1,5 +1,7 @@
 package problems;
 
+import libs.GeneralFunctions;
+
 /**
  * Created with IntelliJ IDEA.
  * User: links
@@ -10,6 +12,18 @@ package problems;
 public class Problem51 extends Problem {
     @Override
     public void run() {
+        long startingPrime =  56003;
+        int primeDigits[] = GeneralFunctions.getDigits(startingPrime);
+        int maxPrimeFamily = 0;
+        long workingPrime = startingPrime;
+        while (maxPrimeFamily < 8)
+        {
+            while (!GeneralFunctions.isPrime(workingPrime))
+            {
+                workingPrime += 2;
+            }
 
+        }
     }
+
 }

@@ -1,6 +1,8 @@
 package libs;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -286,6 +288,22 @@ public class GeneralFunctions {
             if (n % (i - 1) == 0 || n % (i + 1) == 0) return false;
         }
         return true;
+    }
+    public static BigDecimal sqrt(BigDecimal in, int scale){
+        BigDecimal sqrt = new BigDecimal(1);
+        sqrt.setScale(scale + 3, RoundingMode.FLOOR);
+        BigDecimal store = new BigDecimal(in.toString());
+        boolean first = true;
+        do{
+            if (!first){
+                store = new BigDecimal(sqrt.toString());
+            }
+            else first = false;
+            store.setScale(scale + 3, RoundingMode.FLOOR);
+            sqrt = in.divide(store, scale + 3, RoundingMode.FLOOR).add(store).divide(
+                    BigDecimal.valueOf(2), scale + 3, RoundingMode.FLOOR);
+        }while (!store.equals(sqrt));
+        return sqrt.setScale(scale, RoundingMode.FLOOR);
     }
 
 }
